@@ -1,0 +1,818 @@
+/* custom font */
+@font-face
+/* used in the body element */ 
+{
+    font-family: 'cursive';
+    src: url('fonts/AlexBrush-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+/* end of custom font */
+
+/* favorite-colors.html */
+/* 1. type selector */
+h1{
+    color: darkgreen;
+    text-align: center;
+}
+
+/* 2. Descendant selectors */
+header p{
+    color: chocolate; 
+}
+header p span{
+    color: green;
+}
+header .specificityColor{
+    color: moccasin;
+}
+
+/* 3. Class selectors */
+.highlight{
+    background-color: yellow;
+}
+.specificityColor{
+    color: hotpink;
+}
+
+/* box model */
+.box-a{
+    opacity: 0;
+    animation: fadeBounce 1s forwards; /* animation-fill-mode: forwards;
+    makes it use the 100% state as its permenent value when animation is completed */
+    background-color: lightslategray;
+    padding: 20px 20px 0 20px;
+    border: 3px solid black;
+    margin-bottom: 50px;
+    /* this was here in the beggening and i dont know why its here now:
+    width: auto;
+    height: auto;
+    float: left;
+    box-sizing: border-box;
+    */
+    
+    box-shadow: 10px 2px 5px rgba(0, 0, 0, .5); /* horozantial postion, vertical position, blur radius of the shadow, color of the shadow.
+    for inner shadow type inset before the values */
+
+    border-radius: 25px 25px 10px 10px; /* for rounded corners - values go clockwise starting from top left corner.
+    for eleptical corners, give a balue for example: 10px/25px */
+}
+
+.boxes :nth-child(2) .box-a {
+    animation-delay: .5s;
+}
+
+.boxes :nth-child(3) .box-a {
+    animation-delay: 1s;
+}
+
+.boxes :nth-child(4) .box-a {
+    animation-delay: 1.5s;
+}
+
+
+/* helpingFloats.html */
+/* creating page layouts with floats */
+.container{
+    max-width: 940px;
+    margin: 0 auto;
+    padding: 0 40px;
+    
+}
+
+.content-area{
+    border-top: 4px solid #e5e9dc;
+    border-bottom: 4px solid #e5e9dc;
+    background-color: white;
+    
+}
+
+.main-area{
+    float: left;
+    padding-right: 40px;
+    box-sizing: border-box;
+    
+    
+}
+
+.sidebar{
+    float: left;
+    background-color: #e5e9dc;
+    /* copy and paste for outdated browsers- gradient backgrounds */
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#e5e9dc), to(white));
+    background-image: -webkit-linear-gradient(top, #e5e9dc, white);
+    background-image: -moz-linear-gradient(top, #e5e9dc, white);
+    background-image: -ms-linear-gradient(top, #e5e9dc, white);
+    background-image: -o-linear-gradient(top, #e5e9dc, white);
+    /* end of copy and paste */
+    background-image: linear-gradient(to bottom, #e5e9dc, white); /* modern gradient backgrounds, background color fading to the bottom */
+    padding: 20px 40px; /* 20 px vertical and 40 px horozantally, 
+    if for example up and down are different the values go clockwise from 12 acklock */
+    box-sizing: border-box;
+    font-size: 85%;
+
+}
+
+.row:before,
+.row:after,
+.group:before,
+.group:after {
+    content: "";
+    display: table;
+}
+.row:after,
+.group:after {
+    clear: both;
+}
+.row,
+.group {
+    zoom: 1;
+}  /* from group:before up to here is always the same to clear floats, i added .row and it the same */
+
+/* practicing what we learned, costomizing our page */
+html{
+    background-color: #869960;
+}
+
+body{
+    font-family: 'cursive',  sans-serif;
+    font-size: 90%;
+    margin: 0;
+    padding: 0;
+}
+
+header h1{
+    margin: 0;
+    font-weight: normal; /* for not being bold */
+    font-size: 165%; /* 200% is normal size for h1, so we made it smaller */
+}
+
+header p{ 
+    margin: 0;
+}
+
+header {
+    padding-top: 20px;
+    color: white;
+    /* background: url(../images/flower.jpg) right center no-repeat; */
+    background-color: #617140;
+    
+}
+
+footer{
+    text-align: center;
+    font-size: 85%;
+    color: #999;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+
+/* lesson 36 and up(intermediate CSS) */
+/* styling navigation menu */
+.site-nav {
+    margin-top: 20px;
+}
+
+
+.site-nav ul {
+    margin: 0;
+    padding: 0;
+}
+
+.site-nav li {
+    list-style: none;
+    float: left;
+    margin-right: 5px;
+}
+
+.site-nav a {
+    display: block; /* by default its inline level which makes it that it can go on top of other texts, 
+    by making it block display even if i make the padding huge, other texts will move and will not be run over */
+    text-decoration: none; /* to remove line beneath the words */
+    color: green;
+    padding: 10px 20px;
+    background-color: #fff;
+    border: 3px solid #e5e9dc;
+    border-bottom: none;
+    transition-property: color, background-color; /* what properties you want to change, to change all of them just type all */
+    transition-duration: 2s; /* the duration that it will take */
+}
+
+.site-nav a:hover {
+    background-color: #e5e9dc; /* to change background color of the button when the mouse goes over it */
+    color: red;
+}
+
+/* end style navigation */
+
+/* overlapping content & transparent background */
+img {
+    width: 100%;
+    height: auto;
+}
+.image-banner {
+    position: relative;
+    /* you can say for example left: 10px and this image will move 10px to the right relative to itself */
+
+    overflow: hidden; /* any child that has been pushed down of its parent's boundaries should be hidden */ 
+}
+.banner-description {
+    position: absolute;
+    bottom: 0; /* in relative to its parent which is image-banner */
+    left: 0;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.65); /* red, green and blue go from 0 to 255, while alpha(transparentry) goes from 0 to 1 */
+    padding: 15px 25px;
+    opacity: 0; /* transparency */
+    transition-property: all;
+    transition-duration: 1s;
+    transform: translateY(100%) /* to push description down fully */
+}
+
+.image-banner:hover .banner-description { /* every time we hover over the parent image banner live we want to apply new styles to the
+banner description caption box */
+    transform: translateY(0); /* sit where you normally would */
+    opacity: 1;
+}
+
+.image-banner img {
+    display: block; /* to align the image perfectly with its description */
+    transition: all 1s;
+
+}
+
+.image-banner:hover img {
+    transform: scale(1.5);
+}
+
+/* table styles */
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+table th {
+    text-align: left;
+    background-color: #869960;
+    color: #fff;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, .4);
+}
+
+table th, 
+table td {
+    border: 1px solid #869960;
+    padding: 5px; /* both top and bottom */
+}
+
+table.grocery-list tbody tr:nth-child(even) td{ /* nth-child(even) means that it will select every even tr: second, fourth... */
+    background-color: #e5e9dc;
+}
+
+.col-item {
+    width: 60%;
+}
+
+.col-quantity, 
+.col-price {
+    width: 20%;
+}
+
+table.grocery-list tr :nth-child(2), 
+table.grocery-list tr :nth-child(3)
+/* making rule apply to the table with the class grocery-list +
+ :nth-child which means making it apply only to the second and third child of the parent tr */ 
+{
+    text-align: center;
+}
+
+/* end of styling tables */
+
+/* form styles */
+form{
+    background-color: #ECECEC;
+    padding: 30px 40px;
+    margin-bottom: 15px;
+}
+
+.hidden-label
+/* to hide the label */
+{
+    position: absolute;
+    height: 0;
+    width: 0;
+    overflow: hidden;
+    visibility: hidden;
+}
+
+input,
+select {
+    font-family: tahoma, sans-serif; /* the fonts that we set to the body element doesn't apply to forms */
+    font-size: 100%;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"],
+input[type="number"],
+input[type="tel"],
+select
+{
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+    padding: 0 10px;
+    height: 40px;
+    margin-bottom: 15px;
+    border: 1px #cdcdcd;
+    outline: none; /* to remove all default browser border */
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="tel"]:focus
+/* :focus means when clicked on one of these areas */
+{
+    border: 1px solid#869960;
+    box-shadow: inset 2px 2px 2px rgba(0, 0, 0, .13);
+}
+
+input[type="submit"]{
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+    background-color: #869960;
+    color: white;
+    padding: 10px 0;
+    border: 1px solid #798a56;
+    border-radius: 3px; /* rounded corners */
+    margin-bottom: 10px;
+    outline: none;
+}
+
+input[type="submit"]:hover,
+input[type="submit"]:focus {
+    border: 1px solid #535e3b;
+    background-color: #798a56;
+}
+
+.checkbox-text {
+    font-size: 85%;
+    color: #777;
+}
+/* end of form styles */
+
+/* typography. first set rules in the ancestor elements like body, html... */
+.main-area h2{
+    font-size: 200%;
+    font-weight: normal; /* not bold */
+    font-style: italic;
+    letter-spacing: 4px;
+    word-spacing: 10px;
+    text-shadow: 2px 5px 2px #999;
+    text-transform: lowercase;
+}
+
+.main-area p {
+    font-size: 108%;
+    text-align: left; /* by default */
+    text-indent: 25px; /* spacing in the beggening of the paragraph */
+    line-height: 1.5; /* spacing between lines */
+}
+
+/* end of typography */
+
+/* custom fonts */
+
+/* at the top of the page */
+
+/* end of custom fonts */
+
+/* background images- in container and header as well*/
+
+.birds {
+    background: #c2bbb1 url(../images/bird.jpg) center center no-repeat;
+    background-size: cover; /* fills in space perfectly */
+    text-align: center;
+    padding: 100px 0;
+}
+
+.birds p {
+    margin: 0;
+    background-color: rgba(0, 0, 0, .7);
+    color: white;
+    text-shadow: 1px 1px 0 #000;
+    text-align: center;
+}
+/* end of background images */
+
+/* sprites */
+.ui-menu {
+    margin: 0;
+    padding: 0;;
+}
+
+.ui-menu li {
+    float: left;
+    list-style: none;
+}
+
+.ui-menu a {
+    display: block;
+    width: 50px;
+    height: 50px;
+    background-image: url(../images/sprites.png);
+    text-indent: -9999px;
+    background-repeat: no-repeat;
+}
+
+.ui-home a:hover {background-position: -50px 0;}
+
+.ui-profile a {background-position: 0 -50px; /* horozantally then vertically */}
+.ui-profile a:hover {background-position: -50px -50px;}
+
+.ui-settings a {background-position: 0 -100px;}
+.ui-settings a:hover {background-position: -50px -100px;}
+/* end of sprites */
+
+/* Responsive web design */
+@media screen and (max-width:700px) {
+    .main-area,
+    .sidebar {
+        width: auto;
+        float: none;
+    }
+    .main-area {
+        padding-right: 0;
+    }
+    .site-nav li {
+        width: 33.332%;
+        margin-right: 0;
+    }
+    .site-nav a {
+        padding: 15px 0;
+        margin-right: 5px;
+        margin-bottom: 5px;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width:480px) {
+    .container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .content-area {
+        padding-top: 20px;
+    }
+    .hide-small {
+        display: none;
+    }
+    .site-nav li {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 1300px) {
+    body {
+        font-size: 17px;
+    }
+    .container {
+        width: 1200px;
+    }
+
+}
+/* end of responsive web design */
+
+/* responsive grids */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -20px;
+    
+}
+
+.col {
+    width: 100%;
+    padding-right: 20px;
+    box-sizing: border-box;
+    
+}
+
+.col-xs-11 {width: 91.662%; }
+.col-xs-10 {width: 83.332%; }
+.col-xs-9 {width: 75%; }
+.col-xs-8 {width: 66.662%; }
+.col-xs-7 {width: 58.331%; }
+.col-xs-6 {width: 50%; }
+.col-xs-5 {width: 41.662%; }
+.col-xs-4 {width: 33.332%; }
+.col-xs-3 {width: 25%; }
+.col-xs-2 {width: 16.662%; }
+.col-xs-1 {width: 58.332%; }
+
+@media screen and (min-width: 768px) {
+
+    
+    .col-sm-11 {width: 91.662%; }
+    .col-sm-10 {width: 83.332%; }
+    .col-sm-9 {width: 75%; }
+    .col-sm-8 {width: 66.662%; }
+    .col-sm-7 {width: 58.331%; }
+    .col-sm-6 {width: 50%; }
+    .col-sm-5 {width: 41.662%; }
+    .col-sm-4 {width: 33.332%; }
+    .col-sm-3 {width: 25%; }
+    .col-sm-2 {width: 16.662%; }
+    .col-sm-1 {width: 58.332%; }
+}
+         
+@media screen and (min-width: 1024px) {
+
+
+
+    .col-md-11 {width: 91.662%; }
+    .col-md-10 {width: 83.332%; }
+    .col-md-9 {width: 75%; }
+    .col-md-8 {width: 66.662%; }
+    .col-md-7 {width: 58.331%; }
+    .col-md-6 {width: 50%; }
+    .col-md-5 {width: 41.662%; }
+    .col-md-4 {width: 33.332%; }
+    .col-md-3 {width: 25%; }
+    .col-md-2 {width: 16.662%; }
+    .col-md-1 {width: 58.332%; }
+}
+
+@media screen and (min-width: 1280px) {
+
+
+
+    .col-lg-11 {width: 91.662%; }
+    .col-lg-10 {width: 83.332%; }
+    .col-lg-9 {width: 75%; }
+    .col-lg-8 {width: 66.662%; }
+    .col-lg-7 {width: 58.331%; }
+    .col-lg-6 {width: 50%; }
+    .col-lg-5 {width: 41.662%; }
+    .col-lg-4 {width: 33.332%; }
+    .col-lg-3 {width: 25%; }
+    .col-lg-2 {width: 16.662%; }
+    .col-lg-1 {width: 58.332%; }
+}
+
+/* end of responsive grids */
+
+/* flexbox */
+/* all flexbox section is in flexbox.html and flexbox.css */
+/* end of flexbox */
+
+/* box shadows- in box-a class */
+
+/* end of box shadows */
+
+/* rounded corners- in box-a class a well */
+.box-b {
+    text-align: center;
+    background-color: #ccc;
+    width: 200px;
+    height: 200px;
+    line-height: 200px;
+    margin-bottom: 40px;
+    border-radius: 50%; /* half of the size of the element */
+    transition: all 2s ease-out; /* ease by default */
+}
+
+.box-b:hover {
+    transform: rotate(360deg);
+}
+
+.box-c {
+    color: #fff;
+    text-align: center;
+    background-color: #444;
+    width: 350px;
+    height: 200px;
+    line-height: 200px;
+    margin-bottom: 40px;
+    border-radius: 50%; /* half of the size of the element */
+}
+/* end of rounded corners */
+
+/* CSS transform */
+.example-a {
+    color: black;
+    background-color: #ddd;
+    padding-bottom: 20px;
+    transform: rotate(10deg) scale(0.5) skew(15deg) translate(100px, 50px); /* rotate- can also have negetive values,
+    scale- multiply by its own size,
+    skew- tilt the object, can also use skewy and skewx, 
+    position(placement)- horozantally then vertically, will not affect other objects of the page by moving. */
+
+    transform-origin: 0 0; /* position(origin)- the pivot point,
+    by default uses the middle of the object 50% 50% (horozantally and vertically.
+    now we used the top left corner */
+    
+}
+/* end of CSS transform */
+
+/* CSS transition- in .site-nav a, .banner-description, .image-banner img, .box-b, and all of their hovers of course */
+
+/* end of CSS transition */
+
+/* CSS animations- in .box-a */
+@keyframes fadeBounce { /* i choose the name */
+    0%{
+        opacity: 0;
+        transform: translateY(-200%);
+    }
+
+    40% {
+        transform: translateY(0);
+    }
+
+    55% {
+        transform: translateY(-6px);
+    }
+
+    70% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    85% {
+        transform: translateY(-3px);
+    }
+
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideSpin {
+    50% {
+        transform: translateX(150%) scale(.5);
+    }
+
+    75% {
+        transform: translateX(150%) scale(.5) rotate(180deg);
+    }
+    100% {
+        transform: translateX(300%) rotate(180deg);
+    }
+}
+
+/* same just for chrome and mobile versions */
+@-webkit-keyframes slideSpin {
+    50% {
+        transform: translateX(150%) scale(.5);
+    }
+
+    75% {
+        transform: translateX(150%) scale(.5) rotate(180deg);
+    }
+    100% {
+        transform: translateX(300%) rotate(180deg);
+    }
+}
+
+.star {
+    animation: slideSpin 2s infinite alternate forwards; /* animation-iteration-count: infinite;
+    makes the animation repeat infinite amound of times.
+    animation-direction: alternate;
+    makes the animation go back and forth smoothly */
+    -webkit-animation: slideSpin 2s infinite alternate forwards; /* same just for chrome and mobile versions */
+    width: 25%;
+    height: auto;
+}
+/* end of CSS animations */
+
+/* slideshow styles- currently not working */
+.cycle-slideshow {
+    margin-bottom: 30px;
+}
+
+.slide {
+    width: 100%;
+    position: relative;
+}
+
+.slide img {
+    display: block;
+}
+
+.slide-text {
+    position: absolute;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .7);
+    color: #fff;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width:767px) {
+    .slide-text {
+        position: static;
+        background-color: #000;
+    }
+}
+
+.slide-text h3 {
+    margin: 0;
+}
+
+/* prev and next buttons */
+.cycle-prev .cycle-next {
+    position: absolute;
+    top: 30%;
+    background-color: rgba(0, 0, 0, .35);
+    color: #fff;
+    padding: 1px 10px;
+    display: block;
+    cursor: pointer;
+    font-size: 130%;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity .5s;
+}
+
+.cycle-next {
+    right: 0;
+}
+
+.cycle-slideshow:hover .cycle-prev
+.cycle-slideshow:hover .cycle-next {
+    opacity: 1;
+}
+
+.cycle-pager {
+    position: absolute;
+    top: 20px;
+    z-index: 1003;
+    width: 100%;
+    text-align: center;
+}
+
+.cycle-pager span {
+    text-indent: -9999px;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #fff;
+    margin: 0 4px;
+    cursor: pointer;
+}
+
+.cycle-pager .cycle-pager-active {
+    background-color: #000;
+}
+
+/*button A style */
+.btn-a {
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: #365267;
+    color: #fff;
+    font-size: 84%;
+    margin-left: 10%;
+}
+
+.btn-a:hover {
+    background-color: #fff;
+    color: #365267;
+}
+/* end of slideshow- currently not working */
+
+/* reveal and hide styles- doesn't work, stopped video num 61 on 7:25 min */
+.toggle-btn {
+    display: none;
+}
+
+@media screen and (max-width: 767px) {
+    .toggle-btn-visible {
+        display: block;
+    }
+    
+    .toggle-btn-hidden {
+        display: none;
+    }
+    
+    .toggle-btn-expanded {
+        display: block;
+    }
+}
+/* end of reveal and hide styles- doesn't work */
+
+/* open image in modal window(gallery)- didn't try cause javascript ain't working */
+
+/* end of open image in modal window(gallery) that doesn't work */
+
